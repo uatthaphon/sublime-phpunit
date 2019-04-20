@@ -181,3 +181,26 @@ class FindMatchingTestCommand(sublime_plugin.WindowCommand):
         self.window.run_command("focus_group", {"group": 0})
         self.window.run_command("focus_group", {"group": tab_target})
 
+
+class RunPhpunitTestWithTestDoxCommand(PhpunitTestCommand):
+
+    def run(self, *args, **kwargs):
+        file_name, phpunit_config_path, phpunit_bin, active_view, directory = self.get_paths()
+
+        self.run_in_terminal('cd ' + phpunit_config_path + self.get_cmd_connector() + phpunit_bin + ' --testdox ' + file_name)
+
+class RunPhpunitTestsInDirWithTestDoxCommand(PhpunitTestCommand):
+
+    def run(self, *args, **kwargs):
+        file_name, phpunit_config_path, phpunit_bin, active_view, directory = self.get_paths()
+
+        self.run_in_terminal('cd ' + phpunit_config_path + self.get_cmd_connector() + phpunit_bin + ' --testdox ' + directory)
+
+class RunSinglePhpunitTestWithTestDoxCommand(PhpunitTestCommand):
+
+    def run(self, *args, **kwargs):
+        file_name, phpunit_config_path, phpunit_bin, active_view, directory = self.get_paths()
+
+        current_function = self.get_current_function(active_view)
+
+        self.run_in_terminal('cd ' + phpunit_config_path + self.get_cmd_connector() + phpunit_bin + ' --testdox ' + file_name + " --filter '/::" + current_function + "$/'")

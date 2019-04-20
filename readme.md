@@ -1,3 +1,5 @@
+> Fork Project with additional `--testdox`
+
 # Sublime PHPUnit
 
 Convenient Sublime Text commands for running your PHPUnit tests. Scans up the directory tree to find the closest phpunit.xml file and runs phpunit from there. If it can't find one, it just runs phpunit from `/`.
@@ -8,7 +10,7 @@ Convenient Sublime Text commands for running your PHPUnit tests. Scans up the di
 Installation is as simple as cloning the repository into your Sublime Text install's `Packages` folder:
 
 ```bash
-git clone https://github.com/adamwathan/sublime-phpunit ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/sublime-phpunit
+git clone https://github.com/uatthaphon/sublime-phpunit ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/sublime-phpunit
 ```
 
 ## Available Commands & Example Keybindings
@@ -19,8 +21,11 @@ Here's the full list of commands:
 
 ```
 run_phpunit_test
+run_phpunit_test_with_test_dox
 run_phpunit_tests_in_dir
+run_phpunit_tests_in_dir_with_test_dox
 run_single_phpunit_test
+run_single_phpunit_test_with_test_dox
 run_last_phpunit_test
 run_all_phpunit_tests
 ````
@@ -50,12 +55,12 @@ By default, this package uses macOS's built-in Terminal.app. If you want to use 
 
 ## Using fish shell
 
-If you use [fish shell](https://fishshell.com/), specify this in your settings: 
+If you use [fish shell](https://fishshell.com/), specify this in your settings:
 
 ```
 {
     "phpunit-sublime-shell": "fish"
 }
-``` 
+```
 
 This will instruct Sublime PHPUnit to connect the commands using fish's `; and` instead of bash's `&&`.
