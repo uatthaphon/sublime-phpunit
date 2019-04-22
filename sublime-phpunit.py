@@ -204,3 +204,40 @@ class RunSinglePhpunitTestWithTestDoxCommand(PhpunitTestCommand):
         current_function = self.get_current_function(active_view)
 
         self.run_in_terminal('cd ' + phpunit_config_path + self.get_cmd_connector() + phpunit_bin + ' --testdox ' + file_name + " --filter '/::" + current_function + "$/'")
+
+class RunSingleDuskTestWithTestDoxCommand(PhpunitTestCommand):
+
+    def run(self, *args, **kwargs):
+        file_name, phpunit_config_path, phpunit_bin, active_view, directory = self.get_paths()
+
+        current_function = self.get_current_function(active_view)
+
+        self.run_in_terminal('cd ' + phpunit_config_path + self.get_cmd_connector() + 'php artisan dusk ' + file_name + ' --filter ' + current_function + ' --testdox')
+
+class RunAllDuskTestsWithTestDoxCommand(PhpunitTestCommand):
+
+    def run(self, *args, **kwargs):
+        file_name, phpunit_config_path, phpunit_bin, active_view, directory = self.get_paths()
+
+        self.run_in_terminal('cd ' + phpunit_config_path + self.get_cmd_connector() + 'php artisan dusk --testdox')
+
+class RunDuskTestsInDirWithTestDoxCommand(PhpunitTestCommand):
+
+    def run(self, *args, **kwargs):
+        file_name, phpunit_config_path, phpunit_bin, active_view, directory = self.get_paths()
+
+        self.run_in_terminal('cd ' + phpunit_config_path + self.get_cmd_connector() + 'php artisan dusk ' + directory + ' --testdox')
+
+class RunDuskTestWithTestDoxCommand(PhpunitTestCommand):
+
+    def run(self, *args, **kwargs):
+        file_name, phpunit_config_path, phpunit_bin, active_view, directory = self.get_paths()
+
+        self.run_in_terminal('cd ' + phpunit_config_path + self.get_cmd_connector() + 'php artisan dusk ' + file_name + ' --testdox')
+
+class RunDuskTestCommand(PhpunitTestCommand):
+
+    def run(self, *args, **kwargs):
+        file_name, phpunit_config_path, phpunit_bin, active_view, directory = self.get_paths()
+
+        self.run_in_terminal('cd ' + phpunit_config_path + self.get_cmd_connector() + 'php artisan dusk ' + file_name)
