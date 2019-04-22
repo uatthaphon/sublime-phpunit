@@ -28,6 +28,14 @@ run_single_phpunit_test
 run_single_phpunit_test_with_test_dox
 run_last_phpunit_test
 run_all_phpunit_tests
+run_dusk_tests_in_dir
+run_dusk_tests_in_dir_with_test_dox
+run_dusk_test
+run_dusk_test_with_test_dox
+run_single_dusk_test
+run_single_dusk_test_with_test_dox
+run_all_dusk_tests
+run_all_dusk_tests_with_test_dox
 ````
 
 Here are some example keybindings:
